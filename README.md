@@ -20,7 +20,7 @@
    git clone https://github.com/yourusername/vidly.git
    cd vidly
    ```
-2. <img alt="Install" width="20" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pipenv/pipenv-original.svg"/> **Install dependencies:**
+2. <img alt="Install" width="20" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/> **Install dependencies:**
    ```bash
    pip install pipenv
    pipenv install

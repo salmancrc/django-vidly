@@ -15,4 +15,4 @@ class Movie(models.Model):
   number_in_stock = models.IntegerField()
   daily_rate = models.FloatField()
   genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
-  data_created = models.DateTimeField(default=timezone.now)
+  date_created = models.DateTimeField(default=timezone.now)

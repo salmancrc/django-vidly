@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# VS Code
+.vscode/
+
+# Virtual environments
+venv/
+.env/
+.envrc
+*.env
+*.venv
+
+# Pipenv
+Pipfile.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Migrations (optional, keep if you want to track them)
+# movies/migrations/__pycache__/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Others
+*.bak
+*.swp
+*.swo

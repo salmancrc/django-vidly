@@ -1,33 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 <div class="min-vh-100 bg-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-    <div class="container">
-      <a class="navbar-brand fw-bold fs-3" href="#">
-        <i class="bi bi-film me-2"></i>Vidly
-      </a>
-      <div class="navbar-nav ms-auto">
-        <span class="navbar-text text-light">
-          <i class="bi bi-collection me-1"></i>{{ movies.count }} Movies
-          Available
-        </span>
-      </div>
-    </div>
-  </nav>
-
   <div class="container py-5">
     <div class="row mb-4">
       <div class="col-12">
         <h1 class="display-5 fw-bold text-dark mb-2">Movie Collection</h1>
-        <p class="lead text-muted">
+        <p class="lead text-muted mb-3">
           Browse our extensive collection of movies available for rental
         </p>
+        <div class="d-flex align-items-center">
+          <span class="badge bg-primary rounded-pill px-3 py-2">
+            <i class="bi bi-collection-play me-2"></i>{{ movies.count }} Movies
+            Available
+          </span>
+        </div>
       </div>
     </div>
 
     <div class="row g-4">
       {% for movie in movies %}
       <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card h-100 shadow-sm border-0 rounded-3 hover-lift">
+        <div class="card h-100 shadow-sm border-0 rounded-3">
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-start mb-3">
               <h5 class="card-title fw-bold text-dark mb-0">
@@ -68,9 +60,12 @@
             </div>
 
             <div class="d-grid">
-              <button class="btn btn-outline-primary btn-sm">
+              <a
+                href="{% url 'detail' movie.id %}"
+                class="btn btn-outline-primary btn-sm"
+              >
                 <i class="bi bi-eye me-1"></i>View Details
-              </button>
+              </a>
             </div>
           </div>
         </div>

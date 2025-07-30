@@ -1,10 +1,142 @@
 {% extends 'base.html' %} {% block content %}
-<dl>
-  <dt>Title</dt>
-  <dd>{{ movie.title }}</dd>
-  <dt>Genre</dt>
-  <dd>{{ movie.genre }}</dd>
-  <dt>Stock</dt>
-  <dd>{{ movie.number_in_stock }}</dd>
-</dl>
+<div class="bg-light min-vh-100">
+  <div class="container py-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'movies:index' %}" class="text-decoration-none">Movies</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          {{ movie.title }}
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Movie Header -->
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <h1 class="display-5 fw-bold text-dark mb-3">{{ movie.title }}</h1>
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <span class="badge bg-primary rounded-pill px-3 py-2">
+            <i class="bi bi-calendar-event me-1"></i>{{ movie.release_year }}
+          </span>
+          <span class="badge bg-secondary rounded-pill px-3 py-2">
+            <i class="bi bi-tag me-1"></i>{{ movie.genre }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movie Details -->
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- Main Info Card -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body p-4">
+            <h4 class="fw-bold text-dark mb-4">Movie Information</h4>
+
+            <div class="row g-4 mb-4">
+              <div class="col-md-6">
+                <div
+                  class="d-flex align-items-center p-3 bg-primary-subtle rounded-3"
+                >
+                  <div class="flex-shrink-0">
+                    <i class="bi bi-box-seam text-primary fs-2"></i>
+                  </div>
+                  <div class="ms-3">
+                    <div class="small text-muted">Available in Stock</div>
+                    <div class="fw-bold text-dark fs-4">
+                      {{ movie.number_in_stock }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="d-flex align-items-center p-3 bg-success-subtle rounded-3"
+                >
+                  <div class="flex-shrink-0">
+                    <i class="bi bi-currency-dollar text-success fs-2"></i>
+                  </div>
+                  <div class="ms-3">
+                    <div class="small text-muted">Daily Rate</div>
+                    <div class="fw-bold text-dark fs-4">
+                      ${{ movie.daily_rate }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <td class="fw-semibold text-muted col-3">Title</td>
+                        <td class="fw-bold">{{ movie.title }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fw-semibold text-muted">Genre</td>
+                        <td class="fw-bold">{{ movie.genre }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fw-semibold text-muted">Release Year</td>
+                        <td class="fw-bold">{{ movie.release_year }}</td>
+                      </tr>
+                      <tr>
+                        <td class="fw-semibold text-muted">Added</td>
+                        <td class="fw-bold">
+                          {{ movie.date_created|date:"F j, Y" }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h5 class="fw-bold text-dark mb-3">Quick Summary</h5>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Status</span>
+              <span
+                class="badge {% if movie.number_in_stock > 0 %}bg-success{% else %}bg-danger{% endif %} rounded-pill"
+              >
+                {% if movie.number_in_stock > 0 %}Available{% else %}Out of
+                Stock{% endif %}
+              </span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Daily Rate</span>
+              <span class="fw-bold">${{ movie.daily_rate }}</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Genre</span>
+              <span class="fw-bold">{{ movie.genre }}</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted">Year</span>
+              <span class="fw-bold">{{ movie.release_year }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

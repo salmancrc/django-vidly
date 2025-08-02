@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movies',  # Register the movies app
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [

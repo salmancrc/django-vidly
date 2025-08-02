@@ -18,10 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from api.models import MovieResource
+
+movie_resource = MovieResource()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('movies/', include('movies.urls')),  # Include the movies app URLs
+    path('api/', include(movie_resource.urls)), # Include the api app URLs	
 ]
 
 if settings.DEBUG:

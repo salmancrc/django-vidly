@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: vidly
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn vidly.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.7"
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+    autoDeploy: true
+
+databases:
+  - name: vidly-db
+    databaseName: vidly
+    user: vidly

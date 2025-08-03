@@ -19,10 +19,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from api.models import MovieResource
+from . import views
 
 movie_resource = MovieResource()
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('movies/', include('movies.urls')),  # Include the movies app URLs
     path('api/', include(movie_resource.urls)), # Include the api app URLs	
